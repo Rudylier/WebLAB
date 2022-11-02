@@ -1,0 +1,106 @@
+/**
+{
+outline: 1px solid red;
+}*/
+
+body 
+{
+	padding: 0;
+	margin: 0;
+	background: rgb(255, 255, 255);
+	text-decoration:none;
+	list-style-type: none;
+}
+*:before,*:after{
+	box-sizing: border-box;
+}
+h1,h2,h3,h4,h5,h6{
+	margin: 0;
+}	
+a{
+	text-decoration: none;
+	color: rgb(37, 37, 37);
+	display:flex;
+	align-items:center;
+}
+.container{
+	width: 100%;
+	max-width: 1600px;
+	margin: 0 auto;
+}
+.intro {
+	padding-top: 60px;
+	padding-bottom: 50px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	color: rgb(255, 255, 255);
+	background-image: url(ivanov_event.jpg);
+
+}
+.nav__link
+{
+	padding-right: 25px;
+}
+.nav--link{
+	color: #b4966e;
+}
+.nav-link{
+	padding-left: 0;
+	color: #353535;
+}
+.dropdown-toggle{
+	padding-top: 100px;
+}
+.nav-item{
+	padding-right: 30px;
+}
+
+.bg-light {
+    background-color: #ffffff!important;
+	
+}
+.navbar{
+	border-bottom: 1px solid rgb(214, 214, 214);
+	border-top: 1px solid rgb(214, 214, 214);
+}
+.event__nav{
+	
+	background-color: black;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	color: #ffffff;
+	margin-top: 10px;
+}
+.decription{
+	margin-top: 40px;
+}
+.btn-light {
+    border-color: #b4966e;
+	border-radius: 0%;
+	padding: 20px 20px;
+	background-color: #ffffff;
+	text-transform: uppercase;
+}
+
+.nav__svg_inner{
+	display: inline-block;
+	align-items: center;
+	padding: 8px;
+}
+.btn-secondary {
+    color: #444;
+    background-color: #ffffff;
+	border-color: #ffffff;
+}
+
+
+.col-9{
+	padding-left: 0;
+	padding-right: 0;
+}
+
+.message{
+    padding: 60px 0;
+    color:#fff;
+}
