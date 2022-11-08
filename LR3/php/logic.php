@@ -18,17 +18,20 @@ function addWhere($where,$add,$and = true){
 }
 $sql = "SELECT * FROM paintings INNER JOIN hall ON hall.id = paintings.id_hall";
 if (isset($_POST['filter'])) {
+    $Date_start = $linc->real_escape_string($_POST['Date_start']);
+    $Date_end = $linc->real_escape_string($_POST['Date_end']);
+    $HallName = $linc->real_escape_string($_POST['HallName']);
+    $description = $linc->real_escape_string($_POST['description']);
+    $Name = $linc->real_escape_string($_POST['Name']);
     $where = "";
-    if ($_POST["Date_start"]) $where = addWhere($where, "`Date` >= '".htmlspecialchars($_POST["Date_start"]))."'"; 
-    if ($_POST["Date_end"]) $where = addWhere($where, "`Date` <= '".htmlspecialchars($_POST["Date_end"]))."'";
-    if ($_POST["HallName"])   $where = addWhere($where, "`HallName` LIKE'%".htmlspecialchars($_POST["HallName"])."%")."'";
-    if ($_POST["description"])   $where = addWhere($where, "`description` LIKE'%".mysqli_real_escape_string($linc,$_POST["description"])."%")."'"; 
-    if ($_POST["Name"])   $where = addWhere($where, "`Name` LIKE'%".mysqli_real_escape_string($linc,$_POST["Name"])."%")."'"; 
+    if ($Date_start) $where = addWhere($where, "`Date` >= '". $Date_start)."'";
+    if ($Date_end) $where = addWhere($where, "`Date` <= '". $Date_end)."'"; 
+    if ($HallName) $where = addWhere($where, "`HallName` LIKE'%". $HallName."%")."'";
+    if ($description) $where = addWhere($where, "`description` LIKE'%". $description."%")."'";   
+    if ($Name) $where = addWhere($where, "`Name` LIKE'%". $Name."%")."'"; 
     if ($where) $sql .= " WHERE $where";
-    $sql.=" ORDER BY Date";
 }
-else
-    $sql.=" ORDER BY Date";
+$sql.=" ORDER BY Date";
 
 
 ?>
