@@ -3,7 +3,7 @@
     require_once '../php/connect.php';
 
     $login=$_POST["login"];
-    $password=md5($_POST['password']);
+    $password=md5($salt . $_POST['password']);
     $check_user = mysqli_query($linc, "SELECT * FROM `users` WHERE `email` = '$login' AND `password` = '$password'");
 
     if (mysqli_num_rows($check_user) > 0) {
