@@ -2,6 +2,20 @@
     require_once '../php/connect.php';
 
     //$validation = false;
+    function generateRandomString() {
+        $length=rand(3,10);
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $charactersLength = strlen($characters);
+        $randomString = '';
+        for ($i = 0; $i < $length; $i++) {
+            $randomString .= $characters[rand(0, $charactersLength - 1)];
+        }
+        return $randomString;
+    }
+
+    foreach($_POST as $item){
+        $item=mysqli_real_escape_string($linc,$item);
+    }
 
     $email=$_POST['login'];
     $user_name=$_POST['full_name'];
@@ -23,7 +37,10 @@
             $_SESSION['message'] = 'Пароль должен содержать от 6 символов с использованием цифр, спец. символов, латиницы, наличием строчных и прописных символов.';
         }
         else if($password == $password_confirm){
-            $password = md5($salt . $password);
+            $salt=generateRandomString();
+            $_SESSION['salt']=$salt;
+            $password = md5($password.$salt);
+            
             mysqli_query($linc, "INSERT INTO `users` (`id`, `email`, `user_name`, `birthday`, `address`, `user_gender`, `user_interests`, `vk_link`, `blood_type`, `rh_factor`, `password`) VALUES (NULL, '$email', '$user_name', '$birthday', '$address', '$user_gender', '$user_interests', '$vk_link', '$blood_type', '$rh_factor', '$password')");            $_SESSION['message'] = 'Регистрация прошла успешно!';
             header('Location: sign_in.php');
         }

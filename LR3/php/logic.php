@@ -33,5 +33,4 @@ if (isset($_POST['filter'])) {
 }
 $sql.=" ORDER BY Date";
 
-
 ?>
